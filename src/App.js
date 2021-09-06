@@ -12,27 +12,20 @@ import Product from "./components/Product";
 
 function App() {
 
-
     let state = useSelector(state => state);
-    const {products} = state
     let dispatch = useDispatch();
-    console.log(products);
 
 useEffect(()=> dispatch(getAllProducts()), [dispatch])
+    const {products} = state
+    console.log(products);
+
+
     return (
         <Router>
     <div>
-
-        <Link to={'/products/'}> Products </Link>
-        {/*<Link to={'/product/'}> Product </Link>*/}
-
-        {/*<Products dispatch={dispatch} product={products}/>*/}
-
+    <Products product={products} dispatch={dispatch}/>
     </div>
-
-           <Route path={'/products/'} component={<Products dispatch={dispatch} product={products}/>} />
-            {/*<Route path={'/product/'} component={<Product key={value.id} products={value}/>} />*/}
-         </Router>
+        </Router>
   );
 }
 
